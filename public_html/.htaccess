@@ -1,0 +1,7 @@
+Options -Indexes -MultiViews
+RewriteEngine On
+RewriteRule ^health$ health.php [END]
+# The Java client POSTs to /reports/index.php and does not follow redirects.
+# Do not block reports/* with [F]: Apache answers 403 before PHP runs and every
+# report stays pending. Directory listing is already disabled by -Indexes.
+RewriteRule ^reports$ reports/index.php [END]

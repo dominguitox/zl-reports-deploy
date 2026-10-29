@@ -97,7 +97,7 @@ function receive(PDO $db, array $config, array $headers, $input): int {
     if (!validReportId($id)) return 400;
     $clientVersion = $headers['X-ZL-Game-Version'] ?? '';
     if (($headers['Content-Type'] ?? '') !== 'application/zip' || ($headers['X-ZL-Consent'] ?? '') !== 'alpha'
-        || !in_array($clientVersion, ['0.1.2', '0.1.3a', '0.1.3b', '0.1.3c'], true)) return 400;
+        || !in_array($clientVersion, ['0.1.2', '0.1.3a', '0.1.3b', '0.1.3c', '0.1.3'], true)) return 400;
     $dir = storage($config);
     $tmp = tempnam($dir, '.incoming-');
     if ($tmp === false) throw new RuntimeException('Cannot create temporary file');
